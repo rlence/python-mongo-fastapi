@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=devmongo
+      - MONGO_INITDB_ROOT_PASSWORD=devpassword
+
+  back-rosen:
+    image: python:3.10.5
+    container_name: back-rosen
+    build: ./
+    working_dir: /usr/src/app
+    env_file: .env
+    command: ["uvicorn", "server.src.server:app", "--host", "0.0.0.0","--port","4000","--reload"]
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongodb
