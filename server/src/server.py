@@ -11,8 +11,3 @@ app = FastAPI()
 app.include_router(router_user)
 app.include_router(router_store)
 app.include_router(admin_router)
-
-# @app.on_event("startup")
-# async def conect_database():
-#     print("CONECT DATABASE")
-#     await connect_mongo()

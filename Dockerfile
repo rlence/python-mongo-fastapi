@@ -7,7 +7,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Create required dirs
-RUN mkdir /var/log/back
+# RUN mkdir /var/log/back
 # RUN mkdir /app
 
 # Set /app as workdir
